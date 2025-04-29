@@ -1,8 +1,10 @@
 package com.tamurbek;
 
 
+import com.tamurbek.model.Product;
 import com.tamurbek.model.Users;
 import com.tamurbek.services.ExternalApiService;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +51,12 @@ public class SoftwareEngineerController {
     @GetMapping("/external-data/all")
     public ResponseEntity<List<Users>> getAllUsers() {
         List<Users> userList = externalApiService.getUserAll();
+        return ResponseEntity.ok(userList);
+    }
+
+    @GetMapping("/samandar-milk-foods/")
+    public HttpEntity<List<Product>> getFoods() {
+        List<Product> userList = externalApiService.getFoods();
         return ResponseEntity.ok(userList);
     }
 }
